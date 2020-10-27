@@ -72,6 +72,7 @@ DynamicArray::~DynamicArray()
 {
 	if (mData)
 		delete[] mData;
+	mData = nullptr;
 }
 
 void DynamicArray::Reserve(int capacity)
@@ -111,7 +112,6 @@ void DynamicArray::Append(double data)
 		Reserve(10);
 	else if (mCapacity <= 2 * mSize)
 		Reserve(2 * mCapacity);  // Reserve twice the existing capacity.
-
 	mData[mSize++] = data;
 }
 
@@ -122,12 +122,13 @@ void DynamicArray::Clear(bool bResizeCapacity)
 	{
 		mCapacity = 0;
 		delete[] mData;
+		mData = nullptr;
 	}
 }
 
 int DynamicArray::Find(double data) const
 {
-	for (int i = 0;i <= mSize;i++)
+	for (int i = 0;i < mSize;i++)
 	{
 		if (mData[i] == data)
 			return i;
@@ -166,19 +167,22 @@ void DynamicArray::Insert(int i, double data)
 	else if (mCapacity <= 2 * mSize)
 		mCapacity *= 2;  // Reserve twice the existing capacity.
 
+	mSize++;
+
 	double* temp = new double[mCapacity];
-	for (int a = 0, b = 0;a < mSize;a++)
+	for (int a = 0, b = 0; a < mSize;a++)
 	{
 		if (a == i)
 		{
-			temp[i] = data;
+			temp[a] = data;
 			b = 1;
 		}
-		temp[i] = mData[i - b];
+		else
+			temp[a] = mData[a - b];
 	}
 	delete[] mData;
 	mData = temp;
-	
+	temp = nullptr;
 }
 
 void DynamicArray::Remove(double data)
