@@ -1,6 +1,7 @@
 ﻿#include"Pointer_to_Object_ex1.h"
 #include<iostream>
 using namespace std;
+
 void Animal::Eat()
 {
 	cout << "Yum-yum" << endl;
@@ -17,15 +18,3 @@ void Eagle::Hunt()
 }
 
 
-int main()
-{
-	Animal* a1 = new Animal;
-	Animal* a2 = new Bird;
-	Animal* a3 = new Eagle;
-
-	a1->Eat();
-	a2->Eat();
-	a3->Eat();
-
-	return 0;
-}

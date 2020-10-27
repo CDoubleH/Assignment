@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Pointer_to_Object_ex2.cpp" />
   </ItemGroup>
   <ItemGroup>

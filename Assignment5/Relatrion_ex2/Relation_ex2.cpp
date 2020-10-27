@@ -11,9 +11,3 @@ void Student::study()
 {
 	p1.write();
 }
-
-int main()
-{
-	Student s1;
-	s1.study();
-}

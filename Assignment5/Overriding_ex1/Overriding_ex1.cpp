@@ -17,11 +17,3 @@ void Washer::use_electricity()
 {
 	cout << "300W Electricity is used." << endl;
 }
-
-int main()
-{
-	Computer computer1;
-	Washer washer1;
-	computer1.use_electricity();
-	washer1.use_electricity();
-}
